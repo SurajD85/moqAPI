@@ -13,48 +13,28 @@ namespace Moq.DB.Repository
     {
         private readonly AppDbContext _context;
 
-        public CandidateRepository(AppDbContext context, ILogger<CandidateRepository> logger)
+        public CandidateRepository(AppDbContext context)
         {
             _context = context;
         }
 
         public async Task AddCandidateAsync(Candidate candidate)
         {
-            try
-            {
-                _context.Candidates.Add(candidate);
-                await _context.SaveChangesAsync();
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
+            _context.Candidates.Add(candidate);
+            await _context.SaveChangesAsync();
+
         }
 
         public async Task<Candidate> GetCandidateByEmailAsync(string email)
         {
-            try
-            {
-                return await _context.Candidates.FindAsync(email);
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
+            return await _context.Candidates.FindAsync(email);
         }
 
         public async Task<Candidate> UpdateCandidateAsync(Candidate candidate)
         {
-            try
-            {
-                _context.Entry(candidate).State = EntityState.Modified;
-                await _context.SaveChangesAsync();
-                return candidate;
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
+            _context.Entry(candidate).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+            return candidate;
         }
     }
 

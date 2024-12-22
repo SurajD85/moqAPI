@@ -10,7 +10,7 @@ namespace Moq.DB.Repository
 {
     public interface ICandidateRepository
     {
-        Task<Candidate> GetCandidateByEmailAsync(string email);  // This will now work with Candidate class
+        Task<Candidate> GetCandidateByEmailAsync(string email);  
         Task AddCandidateAsync(Candidate candidate);
         Task<Candidate> UpdateCandidateAsync(Candidate candidate);
     }

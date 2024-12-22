@@ -16,7 +16,8 @@ Moq.Business/obj/
 Moq.Business/bin/
 Moq.DB/obj/
 Moq.DB/bin/
-
+Moq.Tests/bin/
+Moq.Tests/obj/
 
 # OS-generated files
 .DS_Store

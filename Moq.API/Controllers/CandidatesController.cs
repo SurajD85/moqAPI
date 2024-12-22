@@ -10,10 +10,12 @@ namespace Moq.API.Controllers
     public class CandidatesController : ControllerBase
     {
         private readonly ICandidateService _service;
+        private readonly ILogger<CandidatesController> _logger;
 
-        public CandidatesController(ICandidateService service)
+        public CandidatesController(ICandidateService service, ILogger<CandidatesController> logger)
         {
             _service = service;
+            _logger = logger;
         }
 
         [HttpPost]
@@ -24,8 +26,21 @@ namespace Moq.API.Controllers
                 return BadRequest(ModelState);
             }
 
-            await _service.AddOrUpdateCandidateAsync(candidate);
-            return Ok();
+            try
+            {
+                await _service.AddOrUpdateCandidateAsync(candidate);
+                return Ok();
+            }
+            catch (ServiceException ex)
+            {
+                _logger.LogError(ex, "An error occurred while adding or updating a candidate with email {Email}", candidate.Email);
+                return StatusCode(500, "An error occurred while processing your request.");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An unexpected error occurred while adding or updating a candidate with email {Email}", candidate.Email);
+                return StatusCode(500, "An unexpected error occurred while processing your request.");
+            }
         }
     }
 }
