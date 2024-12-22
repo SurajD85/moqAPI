@@ -1,1 +1,20 @@
+# Ignore Visual Studio temporary files, build results, and
+# include compiled code, symbol files, and the obj folder.
+
+# User-specific files
+.vscode/
 .vs/
+.idea/
+
+# Logs
+*.log
+
+# Temporary build folders
+Moq.API/obj/
+Moq.Business/obj/
+Moq.DB/obj/
+
+
+# OS-generated files
+.DS_Store
+Thumbs.db
