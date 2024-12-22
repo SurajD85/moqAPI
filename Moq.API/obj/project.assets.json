@@ -453,11 +453,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Projects\\MoqApi\\Moq.API\\Moq.API\\Moq.API.csproj",
+      "projectUniqueName": "D:\\Projects\\Personal\\moqAPI\\Moq.API\\Moq.API.csproj",
       "projectName": "Moq.API",
-      "projectPath": "D:\\Projects\\MoqApi\\Moq.API\\Moq.API\\Moq.API.csproj",
+      "projectPath": "D:\\Projects\\Personal\\moqAPI\\Moq.API\\Moq.API.csproj",
       "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
-      "outputPath": "D:\\Projects\\MoqApi\\Moq.API\\Moq.API\\obj\\",
+      "outputPath": "D:\\Projects\\Personal\\moqAPI\\Moq.API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
