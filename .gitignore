@@ -11,8 +11,11 @@
 
 # Temporary build folders
 Moq.API/obj/
+Moq.API/bin/
 Moq.Business/obj/
+Moq.Business/bin/
 Moq.DB/obj/
+Moq.DB/bin/
 
 
 # OS-generated files
