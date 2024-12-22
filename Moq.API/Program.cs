@@ -8,6 +8,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Add Caching
+builder.Services.AddMemoryCache();
+
 // Add services from the Business layer
 builder.Services.AddBusinessLayer(builder.Configuration);
 
