@@ -12,6 +12,29 @@ namespace Moq.DB.Context
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
         public DbSet<Candidate> Candidates { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            // Configure nullable properties
+            modelBuilder.Entity<Candidate>()
+                .Property(c => c.PhoneNumber)
+                .IsRequired(false); 
+
+            modelBuilder.Entity<Candidate>()
+                .Property(c => c.CallTimeInterval)
+                .IsRequired(false); 
+
+            modelBuilder.Entity<Candidate>()
+                .Property(c => c.LinkedInUrl)
+                .IsRequired(false);  
+
+            modelBuilder.Entity<Candidate>()
+                .Property(c => c.GitHubUrl)
+                .IsRequired(false);  
+        }
+
     }
     // Candidate Entity
     public class Candidate

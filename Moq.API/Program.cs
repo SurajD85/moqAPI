@@ -1,5 +1,9 @@
 
+using Microsoft.EntityFrameworkCore;
 using Moq.Business;
+using Moq.Business.Service;
+using Moq.DB.Context;
+using Moq.DB.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,14 +12,18 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Add Caching
-builder.Services.AddMemoryCache();
 
 // Add services from the Business layer
 builder.Services.AddBusinessLayer(builder.Configuration);
 
+// Add Caching
+builder.Services.AddMemoryCache();
+
 var app = builder.Build();
 
+
+// Ensure database is created and migrations are applied
+app.Services.EnsureDatabaseMigrated();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -25,9 +33,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
 app.MapControllers();
-
 app.Run();

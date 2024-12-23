@@ -13,10 +13,10 @@ namespace Moq.Business.Service
     public class CandidateService : ICandidateService
     {
         private readonly ICandidateRepository _repository;
-        private readonly IMemoryCache _cache;
+        private readonly ICacheService _cache;
         private readonly ILogger<CandidateService> _logger;
 
-        public CandidateService(ICandidateRepository repository, IMemoryCache cache, ILogger<CandidateService> logger)
+        public CandidateService(ICandidateRepository repository, ICacheService cache, ILogger<CandidateService> logger)
         {
             _repository = repository;
             _cache = cache;
@@ -67,7 +67,7 @@ namespace Moq.Business.Service
         {
             try
             {
-                if (_cache.TryGetValue(email, out Candidate cachedCandidate))
+                if (_cache.TryGetValue(email, out Candidate? cachedCandidate))
                 {
                     _logger.LogInformation("Cache hit for candidate email: {Email}", email);
                     return cachedCandidate;
@@ -94,6 +94,11 @@ namespace Moq.Business.Service
         // Helper method to add or update candidate in the cache
         private void AddOrUpdateCache(Candidate candidate)
         {
+            if (candidate == null)
+            {
+                throw new ArgumentNullException(nameof(candidate), "Cannot add or update cache with a null candidate.");
+            }
+
             _cache.Set(candidate.Email, candidate, TimeSpan.FromMinutes(30));
             _logger.LogInformation("Candidate cached for email: {Email}", candidate.Email);
         }
