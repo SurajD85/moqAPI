@@ -22,8 +22,8 @@ namespace Moq.Tests.Repositories
                 .UseInMemoryDatabase(databaseName: "CandidateDb") // In-memory database
                 .Options;
 
-            _context = new AppDbContext(options); // Create an instance of AppDbContext using InMemory DB
-            _repository = new CandidateRepository(_context); // Inject it into the repository
+            _context = new AppDbContext(options); 
+            _repository = new CandidateRepository(_context); 
         }
 
         [Fact]
