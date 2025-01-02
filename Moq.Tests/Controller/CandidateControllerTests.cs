@@ -1,15 +1,9 @@
-﻿using Moq.API.Controllers;
-using Moq.Business.Service;
-using Moq.DB.Context;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xunit;
+﻿using FluentAssertions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using FluentAssertions;
+using Moq.API.Controllers;
+using Moq.Business.Service;
+using Moq.DB.Context;
 
 namespace Moq.Tests.Controller
 {

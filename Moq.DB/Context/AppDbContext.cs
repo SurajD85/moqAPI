@@ -1,10 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Moq.DB.Context
 {
@@ -20,19 +15,19 @@ namespace Moq.DB.Context
             // Configure nullable properties
             modelBuilder.Entity<Candidate>()
                 .Property(c => c.PhoneNumber)
-                .IsRequired(false); 
+                .IsRequired(false);
 
             modelBuilder.Entity<Candidate>()
                 .Property(c => c.CallTimeInterval)
-                .IsRequired(false); 
+                .IsRequired(false);
 
             modelBuilder.Entity<Candidate>()
                 .Property(c => c.LinkedInUrl)
-                .IsRequired(false);  
+                .IsRequired(false);
 
             modelBuilder.Entity<Candidate>()
                 .Property(c => c.GitHubUrl)
-                .IsRequired(false);  
+                .IsRequired(false);
         }
 
     }

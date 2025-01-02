@@ -1,12 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 using Moq.DB.Context;
 using Moq.DB.Repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Moq.Tests.Repositories
 {
@@ -22,8 +16,8 @@ namespace Moq.Tests.Repositories
                 .UseInMemoryDatabase(databaseName: "CandidateDb") // In-memory database
                 .Options;
 
-            _context = new AppDbContext(options); 
-            _repository = new CandidateRepository(_context); 
+            _context = new AppDbContext(options);
+            _repository = new CandidateRepository(_context);
         }
 
         [Fact]
@@ -112,7 +106,7 @@ namespace Moq.Tests.Repositories
 
             // Update candidate information
             candidate.FirstName = "UpdatedSuraj";
-           
+
 
             // Act
             var updatedCandidate = await _repository.UpdateCandidateAsync(candidate);

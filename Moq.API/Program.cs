@@ -1,9 +1,4 @@
-
-using Microsoft.EntityFrameworkCore;
 using Moq.Business;
-using Moq.Business.Service;
-using Moq.DB.Context;
-using Moq.DB.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
